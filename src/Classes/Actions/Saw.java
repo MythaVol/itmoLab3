@@ -15,8 +15,8 @@ public class Saw extends Action {
     }
     public Saw(Person p1,Person p2){
         super(p1,p2);
-        this.setName("Saw");
-        this.getP2().addItem(new Trusiki("Trusiki"));
+        this.setName("saw");
+        this.getP2().addItem(new Trusiki("trusiki"));
     }
     public void action(){
         this.getP1().setStamina(10);
@@ -26,7 +26,7 @@ public class Saw extends Action {
     public void description() {
         try {
             Thread.sleep(3000/ this.getActSpd().getSpeed());
-            System.out.println(this);
+            System.out.println(this.getP1().getName() + " " + this + " " + this.getP2().getName() + " in " + this.getP2().getItem(0).toString());
         } catch (InterruptedException e){
             System.out.println(e);
         }
@@ -34,6 +34,6 @@ public class Saw extends Action {
     }
 
     public String toString(){
-        return this.getP1().getName() + " saw " + this.getP2().getName() + " in " + this.getP2().getItem(0).toString();
+        return this.getName();
     }
 }

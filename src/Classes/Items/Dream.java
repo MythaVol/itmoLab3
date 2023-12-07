@@ -7,4 +7,8 @@ public class Dream extends Item {
     public Dream(String name, Description descr) {
         super(name, descr);
     }
+
+    public String toString(){
+        return this.getDescr().getDescr() +" "+ this.getName();
+    }
 }

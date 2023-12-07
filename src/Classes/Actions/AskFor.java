@@ -17,13 +17,13 @@ public class AskFor extends Action {
     public void description() {
         try {
             Thread.sleep(3000/ this.getActSpd().getSpeed());
-            System.out.println(this);
+            System.out.println(this.getP1().getName() + " " + this + " " + this.getP2().getName() + " for phone");
         } catch (InterruptedException e){
             System.out.println(e);
         }
     }
 
     public String toString(){
-        return this.getP1().getName() + " " + this.getName() + " " + this.getP2().getName() + " for phone";
+        return this.getName();
     }
 }

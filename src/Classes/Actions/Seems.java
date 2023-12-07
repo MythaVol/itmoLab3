@@ -23,15 +23,12 @@ public class Seems extends Action {
     public void description() {
         try {
             Thread.sleep(3000/ this.getActSpd().getSpeed());
-            System.out.println(this);
+            System.out.println(this.getI1() + " " + this.getName() + " " + this.getI2());
         } catch (InterruptedException e){
             System.out.println(e);
         }
     }
     public String toString(){
-        if(this.getI1().getDescr()==null)
-            return this.getI1() + " " + this.getName() + " " + this.getI2();
-        else
-            return this.getI1().getDescr().getDescr() + " " +this.getI1() + " " + this.getName() + " " +this.getI2().getDescr().getDescr() + " " + this.getI2();
+        return this.getName();
     }
 }
