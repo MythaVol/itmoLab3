@@ -37,10 +37,11 @@ public class Plot {
                 new Gap(),
                 new WereScattered(),
                 new AskFor(wendy,jack),
-                new Fix(jack)
+                new Fix(jack),
+                new Sippin(jack)
         );
         for(int i =0; i<actList.size(); i++ ){
-                actList.get(i).action();
+            actList.get(i).action();
             if(actList.get(i).getP1()!=null)
                 if(!actList.get(i).getP1().isAlive())
                     System.out.println(actList.get(i).getP1().getName() + " accidently died(((  This is the end of the story. ");
