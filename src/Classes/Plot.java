@@ -29,7 +29,7 @@ public class Plot {
         addAction(
                 new Comeback(jack),
                 new Saw(jack,denny),
-                new Clouded(),
+                new Clouded(new Mind("Jack`s mind"), new CloudOfFurious("cloud of furious", Description.RED)),
                 new Seems(new Everything("Everything"),new Long("long")),
                 new Seems(new Dream("dream", Description.BAD),new Dream("Dream", Description.LONG)),
                 new StireUp(denny),
@@ -38,7 +38,22 @@ public class Plot {
                 new WereScattered(),
                 new AskFor(wendy,jack),
                 new Fix(jack),
-                new Sippin(jack)
+                new Sippin(jack),
+                new Spill(denny),
+                new Watch(denny),
+                new Sounded(new Word("Word"), new Mind("Jack`s mind")),
+                new Closed(new Word("Word"), new ChainOfFurious("chain of furious", Description.ELECTRIC)),
+                new Stepped(jack,denny),
+                new Looked(denny,jack),
+                new Started(denny,new Talking()),
+                new Grab(jack,new Arm("Denny`s arm")),
+                new Bent(jack,new Arm("Denny`s arm")),
+                new Screamed(denny),
+                new Drown(new Voice("Voice"),new Mist("mist")),
+                new Turned(jack,denny),
+                new DugIn(new Fingers("Jack`s fingers"), new Arm("Denny`s arm")),
+                new Was(new Sound("sound",Description.QUIET)),
+                new Was(new Sound("sound",Description.DEAFENING))
         );
         for(int i =0; i<actList.size(); i++ ){
             actList.get(i).action();

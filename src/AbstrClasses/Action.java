@@ -36,6 +36,7 @@ public abstract class Action {
     public Action(Item i1, Item i2){
         this.i1=i1;
         this.i2=i2;
+        this.actSpd=ActionDescr.FAST;
     }
     public Action(){
         this.actSpd=ActionDescr.FAST;
@@ -85,7 +86,9 @@ public abstract class Action {
         this.i2 = i2;
     }
 
-
+    public void setP1(Person p1) {
+        this.p1 = p1;
+    }
 
     public void setActSpd(ActionDescr actSpd) {
         this.actSpd = actSpd;

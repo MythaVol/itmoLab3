@@ -3,7 +3,10 @@ package Enums;
 public enum Description {
     BAD("bad"),
     LONG("long"),
-    RED("red");
+    RED("red"),
+    ELECTRIC("electric"),
+    QUIET("quiet"),
+    DEAFENING("deafening");
     private String descr;
     private Description(String descr){
         this.descr=descr;

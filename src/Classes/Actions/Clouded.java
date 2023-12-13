@@ -10,16 +10,14 @@ import Enums.Description;
 
 
 public class Clouded extends Action {
-    public Clouded(){
-        super();
+    public Clouded(Item i1, Item i2){
+        super(i1, i2);
         this.setName("clouded");
         this.setActSpd(ActionDescr.FAST);
 
     }
 
     public void action(){
-        this.setI1(new Mind("Jack`s mind"));
-        this.setI2(new CloudOfFurious("cloud of furious", Description.RED));
         this.description();
 
     }
