@@ -1,6 +1,8 @@
 package Enums;
 
-public enum ActionDescr {
+public enum
+
+ActionDescr {
     SLOW(1),
     NORMAL(2),
     FAST(3);

@@ -1,6 +1,7 @@
 package Classes.Actions;
 
 import AbstrClasses.Action;
+import AbstrClasses.Item;
 import AbstrClasses.Person;
 import AbstrClasses.Place;
 import Classes.Items.Trusiki;
@@ -13,10 +14,10 @@ public class Saw extends Action {
 
         super(descr,p1,p2,place,name);
     }
-    public Saw(Person p1,Person p2){
+    public Saw(Person p1,Person p2, Item i1){
         super(p1,p2);
         this.setName("saw");
-        this.getP2().addItem(new Trusiki("trusiki"));
+        this.getP2().addItem(i1);
     }
     public void action(){
         this.getP1().setStamina(10);

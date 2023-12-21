@@ -13,10 +13,10 @@ public class Comeback extends Action {
 
         super(descr,p1,p2,place,name);
     }
-    public Comeback(Person p1){
+    public Comeback(Person p1,Place p){
         super(p1);
-        this.setName("Comeback");
-        this.setPlace(new Room("Room"));
+        this.setName("comeback");
+        this.setPlace(p);
     }
 
     public void action(){
@@ -28,7 +28,7 @@ public class Comeback extends Action {
     public void description() {
         try {
             Thread.sleep(3000/ this.getActSpd().getSpeed());
-            System.out.println(this.getP1().getName() + this + this.getPlace().getName());
+            System.out.println(this.getP1().getName() + " " + this + " " + this.getPlace().getName());
         } catch (InterruptedException e){
             System.out.println(e);
         }
@@ -36,6 +36,6 @@ public class Comeback extends Action {
     }
 
     public String toString(){
-        return " comeback in ";
+        return this.getName();
     }
 }
