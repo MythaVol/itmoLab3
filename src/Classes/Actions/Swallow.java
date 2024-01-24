@@ -3,15 +3,14 @@ package Classes.Actions;
 import AbstrClasses.Action;
 import AbstrClasses.Item;
 
-public class LetIn extends Action {
-    public LetIn(Item i1,Item i2){
+public class Swallow extends Action {
+    public Swallow(Item i1,Item i2){
         super(i1, i2);
-        this.setName("let in");
+        this.setName("swallow");
     }
     public void action() {
         this.description();
     }
-
 
 
     public String toString() {

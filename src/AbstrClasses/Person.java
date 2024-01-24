@@ -4,6 +4,8 @@ import Enums.ActionDescr;
 import Enums.Status;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public abstract class Person {
     private Status status;
@@ -12,7 +14,8 @@ public abstract class Person {
     private ActionDescr actionSpeed;
     private String name;
 
-    private ArrayList<Item> itemsList = new ArrayList<>();
+
+    private HashMap<String,Item> itemMap = new HashMap<>();
 
     private boolean isalive = true;
 
@@ -92,17 +95,28 @@ public abstract class Person {
         return actionSpeed;
     }
 
-    public void addItem(Item item){
-        this.itemsList.add(item);
-    }
-    public Item getItem(int number){
-        return this.itemsList.get(number);
+    public Item getItem(String name){
+        return this.itemMap.get(name);
     }
 
     @Override
     public String toString(){
         return name;
     }
+    public void addItem(String name, Item item){
+        this.itemMap.put(name, item);
+    }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person person)) return false;
+        return hp == person.hp && stamina == person.stamina && isalive == person.isalive && status == person.status && actionSpeed == person.actionSpeed && Objects.equals(name, person.name) && Objects.equals(itemMap, person.itemMap);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(status, hp, stamina, actionSpeed, name, itemMap, isalive);
+    }
 }

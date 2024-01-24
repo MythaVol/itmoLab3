@@ -11,9 +11,6 @@ public class Talking extends Action {
     }
 
 
-    public void description() {
-
-    }
 
     public String toString() {
         return this.getName();

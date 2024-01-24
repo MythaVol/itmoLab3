@@ -1,6 +1,7 @@
 package AbstrClasses;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class Place {
     private String name;
@@ -23,4 +24,19 @@ public abstract class Place {
         this.name = name;
     }
 
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Place place)) return false;
+        return Objects.equals(name, place.name) && Objects.equals(pList, place.pList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, pList);
+    }
 }

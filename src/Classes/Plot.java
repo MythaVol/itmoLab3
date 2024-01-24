@@ -13,10 +13,12 @@ import Classes.Places.Room;
 import Enums.Description;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Plot {
 
     private ArrayList<Action> actList = new ArrayList<>();
+    private HashMap<Integer,Action> actions = new HashMap<>();
     private Jack jack = new Jack("Jack");
     private Denny denny = new Denny("Denny");
     private Wendy wendy =new Wendy("Wendy");
@@ -26,14 +28,15 @@ public class Plot {
     public void addAction(Action ... act) {
         for(int i =0; i<act.length; i++ ){
             actList.add(act[i]);
+            actions.put(i,act[i]);
         }
     }
 
     
-    public void run() {
+    public void run(int j) {
         addAction(
                 new Comeback(jack,p),
-                new Saw(jack,denny,new Trusiki("trusiki")),
+                new Saw(jack,denny),
                 new Clouded(jackMind, new CloudOfFurious("cloud of furious", Description.RED),jack),
                 new Seems(new Everything("Everything"),new Long("long")),
                 new Seems(new Dream("dream", Description.BAD),new Dream("Dream", Description.LONG)),
@@ -60,10 +63,19 @@ public class Plot {
                 new Was(new Sound("sound",Description.QUIET)),
                 new Was(new Sound("sound",Description.DEAFENING)),
                 new LetIn(new Sound("sound"), new CloudsOfDarkness("clouds of darkness")),
-                new Losing(new Face("face"), new Colors("colors"))
+                new Losing(new Face("face"), new Colors("colors")),
+                new Become(new Eyes("eyes",Description.BIG)),
+                new BelivedIn(jack,new Death("Denny`s death")),
+                new Swallow(new Voice("voice"),new Word("words")),
+                new TriedToTurnBack(new Voice("voice"),new Time("time")),
+                new Screamed(denny),
+                new Comeback(wendy,p),
+                new Saw(wendy,denny),
+                new Screamed(wendy),
+                new WasStanding(jack)
         );
-        for(int i =0; i<actList.size(); i++ ){
-            actList.get(i).action();
+        for(int i =j; i<actList.size(); i++ ){
+            actions.get(i).action();
             if(actList.get(i).getP1()!=null)
                 if(!actList.get(i).getP1().isAlive()) {
                     System.out.println(actList.get(i).getP1().getName() + " accidently died(((  This is the end of the story. ");

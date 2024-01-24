@@ -3,6 +3,8 @@ package AbstrClasses;
 import Enums.ActionDescr;
 import Enums.Description;
 
+import java.util.Objects;
+
 public abstract class Action {
 
     private Description descr;
@@ -95,6 +97,50 @@ public abstract class Action {
     }
 
     public abstract void action();
-    public abstract void description();
+    public void description(){
+        try{
+            Thread.sleep(3000/ this.getActSpd().getSpeed());
+            if (this.p1 == null){
+                if(this.i1==null){
+                    System.out.println("This action doesn`t exist");
+                }
+                else{
+                    if(this.i2==null && this.p2==null){
+                        System.out.println(this.getI1() + " " + this.getName());
+                    }
+                    else if(this.p2==null){
+                        System.out.println(this.getI1() + " " + this.getName() + " " + this.getI2());
+                    }
+                    else{
+                        System.out.println(this.getI1() + " " + this.getName() + " " + this.getP2());
+                    }
+                }
+            }
+            else {
+                if(this.i1==null && this.p2==null){
+                    System.out.println(this.getP1() + " " + this.getName());
+                }
+                else if(this.p2==null){
+                    System.out.println(this.getP1() + " " + this.getName() + " " + this.getI1().getName());
+                }
+                else{
+                    System.out.println(this.getP1() + " " + this.getName() + " " + this.getP2());
+                }
+            }
+        }catch(InterruptedException e){
+            System.out.println(e);
+        }
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Action action)) return false;
+        return descr == action.descr && Objects.equals(p1, action.p1) && Objects.equals(p2, action.p2) && Objects.equals(place, action.place) && actSpd == action.actSpd && Objects.equals(name, action.name) && Objects.equals(i1, action.i1) && Objects.equals(i2, action.i2);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(descr, p1, p2, place, actSpd, name, i1, i2);
+    }
 }

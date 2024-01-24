@@ -15,14 +15,6 @@ public class Spill extends Action {
         this.getP1().setStamina(-10);
     }
 
-    public void description() {
-        try {
-            Thread.sleep(3000/ this.getActSpd().getSpeed());
-            System.out.println(this.getP1().getName() + " " + this + " " + this.getI1().getName());
-        } catch (InterruptedException e){
-            System.out.println(e);
-        }
-    }
 
     public String toString(){
         return this.getName();

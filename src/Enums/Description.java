@@ -6,7 +6,8 @@ public enum Description {
     RED("red"),
     ELECTRIC("electric"),
     QUIET("quiet"),
-    DEAFENING("deafening");
+    DEAFENING("deafening"),
+    BIG("big");
     private String descr;
     private Description(String descr){
         this.descr=descr;

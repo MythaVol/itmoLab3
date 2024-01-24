@@ -9,6 +9,6 @@ public class Dream extends Item {
     }
 
     public String toString(){
-        return this.getDescr().getDescr() +" "+ this.getName();
+        return this.getName();
     }
 }

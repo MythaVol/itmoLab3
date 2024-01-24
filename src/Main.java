@@ -7,11 +7,16 @@ import Classes.Persons.*;
 import Classes.Places.*;
 import Enums.*;
 
+import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
         Plot p = new Plot();
-        p.run();
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter number of sentence which from we start");
+        int j = s.nextInt();
+        p.run(j);
 
     }
 }

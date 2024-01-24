@@ -13,16 +13,6 @@ public class Looked extends Action {
     }
 
 
-    public void description() {
-        try {
-            Thread.sleep(3000/ this.getActSpd().getSpeed());
-            System.out.println(this.getP1().getName() + " " + this + " " + this.getP2().getName());
-        } catch (InterruptedException e){
-            System.out.println(e);
-        }
-
-    }
-
 
     public String toString() {
         return this.getName();

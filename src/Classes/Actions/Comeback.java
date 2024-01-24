@@ -15,7 +15,7 @@ public class Comeback extends Action {
     }
     public Comeback(Person p1,Place p){
         super(p1);
-        this.setName("comeback");
+        this.setName("comeback in");
         this.setPlace(p);
     }
 
