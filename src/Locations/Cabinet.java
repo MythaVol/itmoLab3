@@ -1,4 +1,5 @@
 package Locations;
 
-public class Cabinet {
+public class Cabinet extends Location{
+
 }

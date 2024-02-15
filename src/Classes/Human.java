@@ -3,7 +3,13 @@ package Classes;
 import BodyParts.Arm;
 import BodyParts.Head;
 import Enums.DamageType;
+import Enums.Emotions;
+import Interfaces.Openable;
+import Items.Item;
 import Locations.Location;
+
+import java.util.HashMap;
+import java.util.Objects;
 
 public class Human {
     private String name;
@@ -15,14 +21,20 @@ public class Human {
     private Head head;
     private Arm arm;
 
+    private Emotions emotion;
+
+    private HashMap<String, Item> items = new HashMap<>();
+
     public Human(String name, int hp, int stamina,Location location, DamageType dmgTypeResist){
         this.stamina=stamina;
         this.hp = hp;
         this.name = name;
         this.dmgTypeResist = dmgTypeResist;
         this.location = location;
+        location.addHuman(this);
         this.head= new Head(this);
-
+        this.arm = new Arm(this);
+        this.isAlive =true;
     }
 
     public void setHp(int hp) {
@@ -33,6 +45,10 @@ public class Human {
         else if (this.hp - hp >= 100)
             this.hp = 100;
         else this.hp -= hp;
+
+        if (this.hp < 55){
+            scream();
+        }
     }
 
     public void setStamina(int stamina) {
@@ -63,5 +79,62 @@ public class Human {
 
     public String getName() {
         return name;
+    }
+
+    public Emotions getEmotion() {
+        return emotion;
+    }
+
+    public Item getItem(String name){
+        return this.items.get(name);
+    }
+
+    public void addItem(Item item){
+        this.items.put(item.getName(),item);
+    }
+
+    private void scream(){
+        System.out.println(this.name + ": Aaaaaaaaaaaaaaaaaaaah!!!!!");
+    }
+
+    public void deleteItem(Item item){
+        this.items.remove(item.getName());
+    }
+
+    public void setEmotion(Emotions emotion) {
+        this.emotion = emotion;
+    }
+
+    public void openSomething(Openable openable){
+        openable.open();
+    }
+    public void catchSomeone(Human h){
+        grabArm(h.getArm());
+        if(h.getArm().isBroken()){
+            h.getArm().beReleased(this);
+        }
+    }
+
+    public void grabArm(Arm a){
+        a.beTaken(this);
+    }
+
+    public Arm getArm() {
+        return arm;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Human human)) return false;
+        return hp == human.hp && stamina == human.stamina && isAlive == human.isAlive && Objects.equals(name, human.name) && dmgTypeResist == human.dmgTypeResist && Objects.equals(location, human.location) && Objects.equals(head, human.head) && Objects.equals(arm, human.arm) && Objects.equals(items, human.items);
+    }
+
+
+    public int hashCode() {
+        return Objects.hash(name, hp, stamina, isAlive, dmgTypeResist, location, head, arm, items);
+    }
+
+    public Head getHead() {
+        return head;
     }
 }

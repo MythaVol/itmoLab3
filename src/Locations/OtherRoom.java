@@ -1,4 +1,4 @@
 package Locations;
 
-public class OtherRoom {
+public class OtherRoom extends Location {
 }

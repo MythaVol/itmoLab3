@@ -8,7 +8,14 @@ public class Head {
     private Human human;
     private Abstraction abstraction;
     public Head(Human h){
-        this.name= h.getName() + "`s arm";
+        this.name= h.getName() + "`s head";
         this.human=h;
+    }
+
+    public void getThought(Abstraction abstraction){
+        this.abstraction=abstraction;
+        if(abstraction.getEmotionalStrength() > 50){
+            this.human.setEmotion(abstraction.getEmotion());
+        }
     }
 }
