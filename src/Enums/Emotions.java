@@ -5,5 +5,6 @@ public enum Emotions {
     HAPPY,
     SCARED,
     ANGRY,
-    STUNNED
+    STUNNED,
+    NETRAL
 }

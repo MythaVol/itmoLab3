@@ -1,3 +1,4 @@
+import Classes.AbstractSimulation;
 import Classes.Abstraction;
 import Classes.Human;
 import Enums.DamageType;
@@ -18,7 +19,10 @@ public class Main {
         Wardrobe wardrobe = new Wardrobe("wardrobe", 50, 50,cabinet , notes);
         Abstraction redCloudOfFurious = new Abstraction("red cloud of furious", Emotions.FURIOUS,60);
         Abstraction darkMist = new Abstraction("dark mist", Emotions.STUNNED, 70);
+        Abstraction death = new Abstraction("denny`s death", Emotions.SCARED,105);
         Beer beer = new Beer("beer", 30,10, cabinet);
+        Phone phone = new Phone("phone", 40, 30, otherLocation);
+        AbstractSimulation absSim = new AbstractSimulation(jack);
 
         beer.sip(jack);
         notes.read(jack);
@@ -36,9 +40,10 @@ public class Main {
         jack.getHead().getThought(redCloudOfFurious);
         notes.beReleased(jack);
         jack.catchSomeone(denny);
-
-
-
-
+        wendy.goTo(cabinet);
+        wendy.getHead().getThought(death);
+        absSim.run();
+        wendy.goTo(otherLocation);
+        wendy.callAmbulance(phone);
     }
     }

@@ -6,6 +6,7 @@ import Enums.DamageType;
 import Enums.Emotions;
 import Interfaces.Openable;
 import Items.Item;
+import Items.Phone;
 import Locations.Location;
 
 import java.util.HashMap;
@@ -74,9 +75,6 @@ public class Human {
         loc.addHuman(this);
     }
 
-    public boolean isAlive(){
-        return isAlive;
-    }
 
     private void death(){
         this.isAlive=false;
@@ -121,6 +119,15 @@ public class Human {
         grabArm(h.getArm());
         if(h.getArm().isBroken()){
             h.getArm().beReleased(this);
+        }
+    }
+
+    public void callAmbulance(Phone p){
+        if(Math.random()<0.5 && this.emotion == Emotions.SCARED)
+            p.call(this, 911);
+        else{
+            p.call(this, 777);
+            callAmbulance(p);
         }
     }
 

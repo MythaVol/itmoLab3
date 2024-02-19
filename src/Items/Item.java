@@ -7,6 +7,8 @@ import Interfaces.Grabable;
 import Locations.Location;
 import Subclasses.Damage;
 
+import java.util.Objects;
+
 public abstract class Item implements Grabable {
     private String name;
     private int hp;
@@ -67,5 +69,17 @@ public abstract class Item implements Grabable {
 
     public boolean isBroken() {
         return isBroken;
+    }
+
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Item item)) return false;
+        return hp == item.hp && hpCapacity == item.hpCapacity && isBroken == item.isBroken && volume == item.volume && Objects.equals(name, item.name) && Objects.equals(location, item.location);
+    }
+
+
+    public int hashCode() {
+        return Objects.hash(name, hp, hpCapacity, isBroken, volume, location);
     }
 }

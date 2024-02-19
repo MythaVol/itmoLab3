@@ -7,18 +7,18 @@ public enum DamageType {
     SMALL_EMOTIONAL(0,10),
     EMOTIONAL(10,20),
     BIG_EMOTIONAL(20,30);
-    private int hpLoss;
-    private int stmnLoss;
+    private final int HPLOSS;
+    private final int STMNLOSS;
     private DamageType(int hpLoss, int stmnLoss){
-        this.hpLoss=hpLoss;
-        this.stmnLoss=stmnLoss;
+        this.HPLOSS=hpLoss;
+        this.STMNLOSS=stmnLoss;
     }
 
     public int getHpLoss() {
-        return hpLoss;
+        return HPLOSS;
     }
 
     public int getStmnLoss() {
-        return stmnLoss;
+        return STMNLOSS;
     }
 }
