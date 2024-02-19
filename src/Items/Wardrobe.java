@@ -21,11 +21,17 @@ public class Wardrobe extends Item implements Openable {
             } else {
                 System.out.println("there is no place to put item");
             }
-        }else System.out.println(this.getName() + " is closed");
+            close();
+        }else {
+            System.out.println(this.getName() + " is closed");
+            open();
+            putItem(name,h);
+        }
     }
     public void open(){
         this.isOpen=true;
     }
+    public void close(){this.isOpen = false;}
 
     public void takeOut(Human h){
         if(isOpen) {
@@ -33,7 +39,11 @@ public class Wardrobe extends Item implements Openable {
                 entrail.beTaken(h);
                 entrail = null;
             }else System.out.println("there is nothing to take");
-        }else System.out.println(this.getName() + " is closed");
+        }else {
+            System.out.println(this.getName() + " is closed");
+            open();
+            takeOut(h);
+        }
     }
 
 }

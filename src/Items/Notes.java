@@ -1,5 +1,6 @@
 package Items;
 
+import Classes.Abstraction;
 import Classes.Human;
 import Enums.Emotions;
 import Locations.Location;

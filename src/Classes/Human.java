@@ -20,7 +20,7 @@ public class Human {
     private Location location;
     private Head head;
     private Arm arm;
-
+    private int drunkScale;
     private Emotions emotion;
 
     private HashMap<String, Item> items = new HashMap<>();
@@ -57,6 +57,15 @@ public class Human {
         else if (this.stamina - stamina >= 100)
             this.stamina = 100;
         else this.stamina -= stamina;
+    }
+
+    public void setDrunkScale(int drunkScale) {
+        if (drunkScale <= 0)
+            this.drunkScale = 0;
+        else if (this.drunkScale + drunkScale >= 100) {
+            this.drunkScale = 100;
+            death();
+        }else this.drunkScale += drunkScale;
     }
 
     public void goTo(Location loc){
@@ -115,12 +124,23 @@ public class Human {
         }
     }
 
+    public void callSomeone(Human h){
+        System.out.println(h.getName() + ", come here");
+        if(Math.random()>0.1){
+            h.goTo(this.location);
+        }else callSomeone(h);
+    }
+
     public void grabArm(Arm a){
         a.beTaken(this);
     }
 
     public Arm getArm() {
         return arm;
+    }
+
+    public int getDrunkScale() {
+        return drunkScale;
     }
 
     public boolean equals(Object o) {

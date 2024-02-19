@@ -1,4 +1,4 @@
-package Items;
+package Classes;
 
 import Enums.Emotions;
 
@@ -19,5 +19,9 @@ public class Abstraction {
 
     public Emotions getEmotion() {
         return emotion;
+    }
+
+    public void setEmotionalStrength(int emotionalStrength) {
+        this.emotionalStrength = emotionalStrength;
     }
 }
