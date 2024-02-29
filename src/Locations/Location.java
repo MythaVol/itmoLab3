@@ -5,7 +5,7 @@ import Items.Item;
 
 import java.util.HashMap;
 
-public abstract class Location {
+public class Location {
     private HashMap<String, Human> humans = new HashMap<>();
     private HashMap<String, Item> items = new HashMap<>();
     public void addHuman(Human h){

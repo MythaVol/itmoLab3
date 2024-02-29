@@ -71,7 +71,6 @@ public abstract class Item implements Grabable {
         return isBroken;
     }
 
-
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Item item)) return false;

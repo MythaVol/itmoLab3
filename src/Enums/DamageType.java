@@ -1,24 +1,19 @@
 package Enums;
 
 public enum DamageType {
-    SMALL_PHYSICAL(10,5),
-    PHYSICAL(20, 10),
-    BIG_PHYSICAL(30,15),
-    SMALL_EMOTIONAL(0,10),
-    EMOTIONAL(10,20),
-    BIG_EMOTIONAL(20,30);
+    SMALL_PHYSICAL(10),
+    PHYSICAL(20),
+    BIG_PHYSICAL(30),
+    SMALL_EMOTIONAL(5),
+    EMOTIONAL(10),
+    BIG_EMOTIONAL(20);
     private final int HPLOSS;
-    private final int STMNLOSS;
-    private DamageType(int hpLoss, int stmnLoss){
+    DamageType(int hpLoss){
         this.HPLOSS=hpLoss;
-        this.STMNLOSS=stmnLoss;
     }
 
     public int getHpLoss() {
         return HPLOSS;
     }
 
-    public int getStmnLoss() {
-        return STMNLOSS;
-    }
 }

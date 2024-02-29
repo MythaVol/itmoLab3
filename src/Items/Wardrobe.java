@@ -7,15 +7,13 @@ import Locations.Location;
 public class Wardrobe extends Item implements Openable {
     private boolean isOpen;
     private Item entrail;
-    public Wardrobe(String name, int hp, int v,Location loc, Item e) {
+    public Wardrobe(String name, int hp, int v,Location loc) {
         super(name, hp,v, loc);
-        if (e.getVolume() < v)
-            this.entrail=e;
         isOpen = false;
     }
     public void putItem(String name, Human h){
         if(isOpen) {
-            if (entrail == null) {
+            if (entrail == null && h.getItem(name).getVolume()<getVolume()) {
                 entrail = h.getItem(name);
                 h.getItem(name).beReleased(h);
             } else {

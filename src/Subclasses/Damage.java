@@ -9,12 +9,9 @@ public class Damage {
         DamageType d = human.getDmgTypeResist();
         if (damageType!= d){
             human.setHp(damageType.getHpLoss());
-            human.setStamina(damageType.getStmnLoss());
         }
     }
     public static void damageToItem(Item item, DamageType damageType){
-        if (damageType == DamageType.BIG_PHYSICAL || damageType == DamageType.PHYSICAL || damageType == DamageType.SMALL_PHYSICAL) {
             item.setHp(damageType.getHpLoss());
-        }else System.out.println("Items immune to emotional damage");
     }
 }

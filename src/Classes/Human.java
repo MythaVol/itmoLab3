@@ -12,10 +12,9 @@ import Locations.Location;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class Human {
+public class Human implements Cloneable {
     private String name;
     private int hp;
-    private int stamina;
     private boolean isAlive;
     private DamageType dmgTypeResist;
     private Location location;
@@ -26,8 +25,7 @@ public class Human {
 
     private HashMap<String, Item> items = new HashMap<>();
 
-    public Human(String name, int hp, int stamina,Location location, DamageType dmgTypeResist){
-        this.stamina=stamina;
+    public Human(String name, int hp, Location location, DamageType dmgTypeResist){
         this.hp = hp;
         this.name = name;
         this.dmgTypeResist = dmgTypeResist;
@@ -52,13 +50,6 @@ public class Human {
         }
     }
 
-    public void setStamina(int stamina) {
-        if (this.stamina - stamina <= 0)
-            this.stamina = 0;
-        else if (this.stamina - stamina >= 100)
-            this.stamina = 100;
-        else this.stamina -= stamina;
-    }
 
     public void setDrunkScale(int drunkScale) {
         if (drunkScale <= 0)
@@ -153,15 +144,20 @@ public class Human {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Human human)) return false;
-        return hp == human.hp && stamina == human.stamina && isAlive == human.isAlive && Objects.equals(name, human.name) && dmgTypeResist == human.dmgTypeResist && Objects.equals(location, human.location) && Objects.equals(head, human.head) && Objects.equals(arm, human.arm) && Objects.equals(items, human.items);
+        return hp == human.hp && isAlive == human.isAlive && Objects.equals(name, human.name) && dmgTypeResist == human.dmgTypeResist && Objects.equals(location, human.location) && Objects.equals(head, human.head) && Objects.equals(arm, human.arm) && Objects.equals(items, human.items);
     }
 
 
     public int hashCode() {
-        return Objects.hash(name, hp, stamina, isAlive, dmgTypeResist, location, head, arm, items);
+        return Objects.hash(name, hp, isAlive, dmgTypeResist, location, head, arm, items);
     }
 
     public Head getHead() {
         return head;
+    }
+
+    @Override
+    protected Human clone() throws CloneNotSupportedException {
+        return (Human)super.clone();
     }
 }

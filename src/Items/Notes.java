@@ -13,6 +13,7 @@ public class Notes extends Item{
     }
 
     public void read(Human h){
+        beTaken(h);
         if(!this.isBroken()){
             h.getHead().getThought(thought);
         }else h.getHead().getThought(new Abstraction("negative thought", Emotions.ANGRY, 20));

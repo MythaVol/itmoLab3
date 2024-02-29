@@ -23,6 +23,7 @@ public class Beer extends Item{
         }else quantity -=q;
     }
     public void pourOn(Human h, Item i){
+        this.beTaken(h);
         if(isFull){
             this.beReleased(h);
             Damage.damageToItem(i, DamageType.BIG_PHYSICAL);
@@ -34,4 +35,6 @@ public class Beer extends Item{
         h.setDrunkScale(15);
         setQuantity(20);
     }
+
+
 }
