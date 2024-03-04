@@ -4,6 +4,7 @@ import BodyParts.Arm;
 import BodyParts.Head;
 import Enums.DamageType;
 import Enums.Emotions;
+import Exceptions.PhoneException;
 import Interfaces.Openable;
 import Items.Item;
 import Items.Phone;
@@ -114,11 +115,15 @@ public class Human implements Cloneable {
     }
 
     public void callAmbulance(Phone p){
-        if(Math.random()<0.5 && this.emotion == Emotions.SCARED)
-            p.call(this, 911);
-        else{
-            p.call(this, 777);
-            callAmbulance(p);
+        try{
+            if(Math.random()<0.5 && this.emotion == Emotions.SCARED)
+                p.call(this, 911);
+            else{
+                p.call(this, 777);
+                callAmbulance(p);
+            }
+        } catch (PhoneException e){
+            System.out.println("Exception: " + e.getMessage());
         }
     }
 

@@ -1,6 +1,7 @@
 package Items;
 
 import Classes.Human;
+import Exceptions.PhoneException;
 import Locations.Location;
 
 public class Phone extends Item{
@@ -8,7 +9,7 @@ public class Phone extends Item{
         super(name, hp, v, loc);
     }
 
-    public void call(Human h, int number){
+    public void call(Human h, int number)throws PhoneException{
         switch (number){
             case 911:
                 System.out.println(h.getName()+" called ambulance");
@@ -17,8 +18,7 @@ public class Phone extends Item{
                 System.out.println(h.getName()+" called to God");
                 break;
             default:
-                System.out.println(h.getName() + " picked wrong number");
-                break;
+                throw new PhoneException(h.getName()+" picked wrong number");
         }
     }
 }
